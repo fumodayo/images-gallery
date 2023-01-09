@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import React, { useState } from "react";
+import profileImg from "../img/profile.jpeg";
 
 const Nav = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,7 +23,12 @@ const Nav = () => {
     setAnchorEl(null);
   };
 
-  const [currentUser, setCurrentUser] = useState(null);
+  profileImg = null;
+  const [currentUser, setCurrentUser] = useState({
+    email: "test@test.com",
+    displayName: "thairyo",
+    photoURL: profileImg,
+  });
 
   return (
     <>
@@ -36,7 +42,8 @@ const Nav = () => {
                 sx={{ width: 32, height: 32 }}
                 src={currentUser?.photoURL}
               >
-                M
+                {currentUser?.displayName?.charAt(0)?.toUpperCase() ||
+                  currentUser?.email?.charAt(0)?.toUpperCase()}
               </Avatar>
             </IconButton>
           </Tooltip>
